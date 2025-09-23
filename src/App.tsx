@@ -1,11 +1,11 @@
 import { useState } from 'react'
 import './App.css'
-import Navbar from './Components/Navbar'
+import NavBar from './Components/NavBar'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import ShopCategory from './Pages/ShopCategory'
 import Product from './Pages/Product'
 import LoginSignup from './Pages/LoginSignup'
-import Shop from './Pages/shop' 
+import Shop from './Pages/Shop' 
 import Cart from './Pages/Cart'
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
@@ -16,7 +16,7 @@ function App() {
   return (
     <>
       <BrowserRouter>
-      <Navbar/>
+      <NavBar/>
       <Routes>
         <Route path='/' element={<Shop/>}/>
         <Route path='/men' element={<ShopCategory category="men's clothing"/>}/>
