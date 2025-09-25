@@ -51,7 +51,8 @@ const NextArrow = (props: any) => {
 };
 
 const Hero: React.FC = () => {
-
+  const [menu, setMenu] = useState("shop");
+  
   const slides = [
     { id: 1, path: "/men", img: men, label: "men" },
     { id: 2, path: "/women", img: women, label: "women" },
@@ -92,6 +93,9 @@ const Hero: React.FC = () => {
           </Box>
         ))}
       </Slider>
+      <Box sx={{ mt: 2, textAlign: "center" }}>
+        <p>Selected category: {menu}</p>
+      </Box>
     </Box>
   );
 };
