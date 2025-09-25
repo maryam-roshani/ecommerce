@@ -3,7 +3,6 @@ import axios from "../axios.ts";
 import { Link } from "react-router-dom";
 import {
   Box,
-  Grid,
   Typography,
   Card,
   CardMedia,
@@ -55,9 +54,18 @@ const Products: React.FC = () => {
           <CircularProgress />
         </Box>
       ) : (
-        <Grid container spacing={3}>
+        <Box
+          display="grid"
+          gap={3}
+          gridTemplateColumns={{
+            xs: "1fr",                 // 1 column on extra-small screens
+            sm: "1fr 1fr",             // 2 columns on small screens
+            md: "1fr 1fr 1fr",         // 3 columns on medium screens
+            lg: "1fr 1fr 1fr 1fr"      // 4 columns on large screens
+          }}
+        >
           {products.map((product) => (
-            <Grid item xs={12} sm={6} md={4} lg={3} key={product.id}>
+            <Box key={product.id}>
               <Card sx={{ height: "100%", display: "flex", flexDirection: "column" }}>
                 <CardMedia
                   component="img"
@@ -87,9 +95,9 @@ const Products: React.FC = () => {
                   </Button>
                 </CardActions>
               </Card>
-            </Grid>
+            </Box>
           ))}
-        </Grid>
+        </Box>
       )}
     </Box>
   );

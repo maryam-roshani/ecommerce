@@ -51,7 +51,6 @@ const NextArrow = (props: any) => {
 };
 
 const Hero: React.FC = () => {
-  const [menu, setMenu] = useState("shop");
 
   const slides = [
     { id: 1, path: "/men", img: men, label: "men" },

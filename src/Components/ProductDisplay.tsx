@@ -10,7 +10,6 @@ import {
   Accordion,
   AccordionSummary,
   AccordionDetails,
-  Grid,
   Box,
 } from "@mui/material";
 
@@ -40,8 +39,16 @@ const ProductDisplay: React.FC<ProductProps> = ({ product }) => {
   const { addToCart } = useContext(ShopContext)!;
 
   return (
-    <Grid container justifyContent="center" sx={{ mt: 4 }}>
-      <Grid item xs={12} sm={10} md={8}>
+    <Box display="flex" justifyContent="center" sx={{ mt: 4 }}>
+      <Box
+        sx={{
+          width: {
+            xs: "100%",   // full width on mobile
+            sm: "83.33%", // ~10/12 columns
+            md: "66.66%"  // ~8/12 columns
+          }
+        }}
+      >
         <Card sx={{ display: "flex", flexDirection: { xs: "column", md: "row" }, p: 2, borderRadius: 3, boxShadow: 4 }}>
           {/* Product Image */}
           <CardMedia
@@ -103,8 +110,8 @@ const ProductDisplay: React.FC<ProductProps> = ({ product }) => {
             </CardActions>
           </Box>
         </Card>
-      </Grid>
-    </Grid>
+      </Box>
+    </Box>
   );
 };
 

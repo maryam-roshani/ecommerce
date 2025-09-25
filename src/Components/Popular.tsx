@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import axios from "../axios.ts";
 import {
   Box,
-  Grid,
   Typography,
   Card,
   CardMedia,
@@ -55,9 +54,19 @@ const Popular: React.FC = () => {
           <CircularProgress />
         </Box>
       ) : (
-        <Grid container spacing={3}>
+
+        <Box
+          display="grid"
+          gap={3}
+          gridTemplateColumns={{
+            xs: "1fr",                 // 1 column on extra-small screens
+            sm: "1fr 1fr",             // 2 columns on small screens
+            md: "1fr 1fr 1fr",         // 3 columns on medium screens
+            lg: "1fr 1fr 1fr 1fr"      // 4 columns on large screens
+          }}
+        >
           {products.map((item) => (
-            <Grid item xs={12} sm={6} md={4} lg={3} key={item.id}>
+            <Box key={item.id}>
               <Card sx={{ height: "100%", display: "flex", flexDirection: "column" }}>
                 <CardMedia
                   component="img"
@@ -87,9 +96,9 @@ const Popular: React.FC = () => {
                   </Button>
                 </CardActions>
               </Card>
-            </Grid>
-          ))}
-        </Grid>
+            </Box>
+            ))}
+        </Box>
       )}
     </Box>
   );

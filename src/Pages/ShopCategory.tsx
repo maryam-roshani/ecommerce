@@ -2,7 +2,6 @@ import React, { useContext, useState } from "react";
 import {
   Container,
   Typography,
-  Grid,
   FormControl,
   InputLabel,
   Select,
@@ -59,20 +58,28 @@ const ShopCategory: React.FC<CategoryProps> = ({ category }) => {
         </FormControl>
       </Box>
 
-      {/* Products Grid */}
-      <Grid container spacing={3}>
-        {sortedProducts.map((item) => (
-          <Grid item xs={12} sm={6} md={4} lg={3} key={item.id}>
-            <Item
-              id={item.id}
-              title={item.title}
-              image={item.image}
-              price={item.price}
-              category={item.category}
-            />
-          </Grid>
+      <Box
+          display="grid"
+          gap={3}
+          gridTemplateColumns={{
+            xs: "1fr",                 // 1 column on extra-small screens
+            sm: "1fr 1fr",             // 2 columns on small screens
+            md: "1fr 1fr 1fr",         // 3 columns on medium screens
+            lg: "1fr 1fr 1fr 1fr"      // 4 columns on large screens
+          }}
+        >
+          {sortedProducts.map((item) => (
+            <Box key={item.id}>
+              <Item
+                id={item.id}
+                title={item.title}
+                image={item.image}
+                price={item.price}
+                category={item.category}
+              />
+          </Box>
         ))}
-      </Grid>
+      </Box>
     </Container>
   );
 };

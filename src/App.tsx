@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import './App.css'
 import NavBar from './Components/NavBar'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'

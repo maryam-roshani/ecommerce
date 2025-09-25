@@ -13,7 +13,6 @@ import {
   TextField,
   Paper,
 } from "@mui/material";
-import Grid from "@mui/material/Grid";
 import { ShopContext } from "../Context/ShopContext";
 import { BsDashCircleFill, BsFillPlusCircleFill, BsFillTrashFill } from "react-icons/bs";
 
@@ -88,53 +87,53 @@ const CartItems: React.FC = () => {
         </Table>
       </Paper>
 
-      {/* Cart Totals & Promo Code */}
-      <Grid container spacing={3}>
-        {/* Totals */}
-        <Grid component="div" item xs={12} md={6}>
+
+      {/* Promo Code */}
+      <Box 
+          display="grid"
+          gridTemplateColumns={{ xs: "1fr", md: "1fr 1fr" }} 
+          gap={3}
+        >
+          {/* Totals */}
           <Paper elevation={3} sx={{ p: 3 }}>
             <Typography variant="h6" gutterBottom>
               Cart Totals
             </Typography>
             <Divider sx={{ mb: 2 }} />
+            {/* subtotal */}
             <Box display="flex" justifyContent="space-between" mb={1}>
               <Typography>Subtotal</Typography>
-              <Typography>${Number(getTotalCartAmount()).toFixed(2)}</Typography>
+              <Typography>$120.00</Typography>
             </Box>
             <Divider sx={{ mb: 1 }} />
+            {/* shipping */}
             <Box display="flex" justifyContent="space-between" mb={1}>
               <Typography>Shipping</Typography>
               <Typography>Free</Typography>
             </Box>
             <Divider sx={{ mb: 1 }} />
+            {/* total */}
             <Box display="flex" justifyContent="space-between" mb={2}>
               <Typography variant="h6">Total</Typography>
-              <Typography variant="h6">${Number(getTotalCartAmount()).toFixed(2)}</Typography>
+              <Typography variant="h6">$120.00</Typography>
             </Box>
             <Button variant="contained" fullWidth>
               Proceed to Checkout
             </Button>
           </Paper>
-        </Grid>
 
-        {/* Promo Code */}
-        <Grid item xs={12} md={6}>
+          {/* Promo Code */}
           <Paper elevation={3} sx={{ p: 3 }}>
             <Typography variant="body1" gutterBottom>
               If you have a promo code, enter it here
             </Typography>
             <Box display="flex" gap={1}>
-              <TextField
-                placeholder="Promo code"
-                variant="outlined"
-                size="small"
-                fullWidth
-              />
+              <TextField placeholder="Promo code" size="small" fullWidth />
               <Button variant="outlined">Submit</Button>
             </Box>
           </Paper>
-        </Grid>
-      </Grid>
+        </Box>
+
     </Box>
   );
 };
